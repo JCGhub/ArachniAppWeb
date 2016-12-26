@@ -2,7 +2,7 @@
     <div class="">
         <div class="page-title">
             <div class="title_left">
-                <h3>File Queries</h3>
+                <h3>File Name Queries</h3>
             </div>
         </div>
         <div class="clearfix"></div>
@@ -14,7 +14,7 @@
                         <?php
                         if($role != "1"){
                             ?>
-                            <a href="<?php echo base_url(); ?>query/query_form/<?php echo $id_cf; ?>"><button class="btn btn-info btn-xs pull-right" style="vertical-align:middle;" type="button">Create query</button></a>
+                            <a href="<?php echo base_url(); ?>main/query_form/<?php echo $id_cf; ?>"><button class="btn btn-info btn-xs pull-right" style="vertical-align:middle;" type="button">Create query</button></a>
                             <?php
                         }
                         ?>
@@ -22,9 +22,6 @@
                         <div class="clearfix"></div>
                     </div>
                     <div class="x_content">
-                        <p class="text-muted font-13 m-b-30">
-                            Responsive is an extension for DataTables that resolves that problem by optimising the table's layout for different screen sizes through the dynamic insertion and removal of columns from the table.
-                        </p>
                         <table id="datatable" class="table table-striped table-bordered">
                             <thead>
                                 <tr>
@@ -38,7 +35,15 @@
                                 foreach($file_queries as $var){
                                 ?>
                                 <tr>
-                                    <td><a href="<?php echo base_url(); ?>query/file_name_row/<?php echo $var->id_query; ?>"><?php echo $var->name; ?></a><a href="<?php echo base_url(); ?>query/query_view/<?php echo $var->id_query; ?>"><i class="fa fa-eye pull-right"></i></a></td>
+                                    <td><a href="<?php echo base_url(); ?>main/file_name_row/<?php echo $var->id_query; ?>"><?php echo $var->name; ?></a>
+                                    <?php
+                                    if($var->name != "Default query" && $id_user == $var->id_user){
+                                        ?>
+                                        <a href="<?php echo base_url(); ?>main/delete_query/<?php echo $var->id_query; ?>"><i class="fa fa-trash-o pull-right" style="padding-left:5px;"></i></a>
+                                        <?php
+                                    }
+                                    ?>
+                                    <a href="<?php echo base_url(); ?>main/query_view/<?php echo $var->id_query; ?>"><i class="fa fa-eye pull-right"></i></a></td>
                                     <td><?php echo $var->namerole; ?></td>
                                     <td><?php echo $var->nameuser; ?></td>
                                 </tr>

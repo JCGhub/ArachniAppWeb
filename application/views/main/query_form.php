@@ -22,7 +22,7 @@
                             <b>Invalid words/characters:</b> Field identificators in SELECT and WHERE clauses (id_xx) and ';' character.
                         </p>
                         <br />
-                        <form action="<?php echo base_url(); ?>query/query_form_val/<?php echo $id_cf; ?>" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" method="post">
+                        <form action="<?php echo base_url(); ?>main/query_form_val/<?php echo $id_cf; ?>" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" method="post">
                             <div class="form-group">
                                 <label class="control-label col-md-2 col-sm-2 col-xs-12">Query name * </label>
                                 <div class="col-md-4 col-sm-4 col-xs-12">

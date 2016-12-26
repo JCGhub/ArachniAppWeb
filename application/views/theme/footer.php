@@ -1,11 +1,10 @@
                 <footer>
                     <div class="pull-left">
-                        <a href="#" style="padding-right:15px;">About</a>
-                        <a href="#" style="padding-right:15px;">Help</a>
-                        <a href="#">More</a>
+                        <a href="<?php echo base_url(); ?>main/about" style="padding-right:15px;">About</a>
+                        <a href="#">More ArachniApp</a>
                     </div>
                     <div class="pull-right">
-                        &copy; 2016 · ArachniApp · Web design based on the Bootstrap 3 template Gentelella Alela!</a>
+                        &copy; 2017 · ArachniApp · Web design based on the Bootstrap 3 template Gentelella Alela!</a>
                     </div>
                     <div class="clearfix"></div>
                 </footer>

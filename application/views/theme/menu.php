@@ -27,7 +27,7 @@
             <div class="main_container">
                 <div class="col-md-3 left_col">
                     <div class="left_col scroll-view">
-                        <div class="navbar nav_title" style="border: 0;">
+                        <div class="navbar nav_title navLogo" style="border: 0;">
                             <a href="<?php echo base_url(); ?>" class="site_title"><img src="<?php echo base_url(); ?>/assets/img/AAlogo.png" style="width:80%;"></a>
                         </div>
                         <div class="clearfix"></div>
@@ -62,7 +62,7 @@
                                     <?php
                                     }
                                     ?>
-                                            <a href="<?php echo base_url(); ?>query/file_name">
+                                            <a href="<?php echo base_url(); ?>main/file_name">
                                             <i class="fa fa-file-text-o"></i>
                                             File Name
                                             </a>
@@ -79,7 +79,7 @@
                                     <?php
                                     }
                                     ?>
-                                            <a href="<?php echo base_url(); ?>query/category_list">
+                                            <a href="<?php echo base_url(); ?>main/category_list">
                                             <i class="fa fa-coffee"></i>
                                             Category
                                             </a>
@@ -96,7 +96,7 @@
                                     <?php
                                     }
                                     ?>
-                                            <a href="<?php echo base_url(); ?>query/date_list">
+                                            <a href="<?php echo base_url(); ?>main/date_list">
                                             <i class="fa fa-calendar"></i>
                                             Date
                                             </a>
@@ -113,7 +113,7 @@
                                     <?php
                                     }
                                     ?>
-                                            <a href="<?php echo base_url(); ?>query/web_portal_list">
+                                            <a href="<?php echo base_url(); ?>main/web_portal_list">
                                             <i class="fa fa-laptop"></i>
                                             Web Portal
                                             </a>
@@ -121,15 +121,15 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="sidebar-footer hidden-small">
-                            <a href="<?php echo base_url(); ?>query" data-toggle="tooltip" data-placement="top" title="Introduction">
+                        <div class="sidebar-footer hidden-small icons-background">
+                            <a href="<?php echo base_url(); ?>main" data-toggle="tooltip" data-placement="top" title="Introduction">
                                 <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
                             </a>
                             <a href="#" data-toggle="tooltip" data-placement="top" title="User manual">
                                 <span class="glyphicon glyphicon-book" aria-hidden="true"></span>
                             </a>
-                            <a href="#" data-toggle="tooltip" data-placement="top" title="Get ArachniApp Desktop">
-                                <span class="glyphicon glyphicon-floppy-save" aria-hidden="true"></span>
+                            <a href="#" data-toggle="tooltip" data-placement="top" title="ArachniApp Desktop">
+                                <i class="fa fa-github" style="font-size:125%;" aria-hidden="true"></i>
                             </a>
                             <a href="<?php echo base_url(); ?>home/logout" data-toggle="tooltip" data-placement="top" title="Logout">
                                 <span class="glyphicon glyphicon-off" aria-hidden="true"></span>

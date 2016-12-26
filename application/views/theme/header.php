@@ -11,7 +11,7 @@
                         <span class=" fa fa-angle-down"></span>
                     </a>
                     <ul class="dropdown-menu dropdown-usermenu pull-right">
-                        <li><a href="<?php echo base_url(); ?>query/profile"> Profile</a></li>
+                        <li><a href="<?php echo base_url(); ?>main/profile"> Profile</a></li>
                         <?php
                         if($role == 1){
                             ?>
@@ -20,7 +20,7 @@
                         }
                         else{
                             ?>
-                            <li><a href="<?php echo base_url(); ?>query/user_queries"> My queries</a></li>
+                            <li><a href="<?php echo base_url(); ?>main/user_queries"> My queries</a></li>
                             <li><a href="<?php echo base_url(); ?>home/logout"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
                             <?php
                         }

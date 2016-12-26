@@ -10,13 +10,19 @@
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                     <div class="x_title">
-                        <h2>Full list of dates<small>Hold down the Ctrl (windows) / Command (Mac) button to select multiple options.</small></h2>
-                        <a href="<?php echo base_url(); ?>query"><button class="btn btn-warning btn-xs pull-right" style="vertical-align:middle;" type="button">Return</button></a>
+                        <h2>Full list of dates</h2>
+                        <a href="<?php echo base_url(); ?>main"><button class="btn btn-warning btn-xs pull-right" style="vertical-align:middle;" type="button">Return</button></a>
                         <div class="clearfix"></div>
                     </div>
                     <div class="x_content">
+                        <p class="text-muted font-13 m-b-30">
+                        In this section you can choose the date or set of dates in which the processing of a configuration file occurred and the download of the information.
+                        </p>
+                        <p class="text-muted font-13 m-b-30">
+                            <b>Way to use:</b> Hold down the Ctrl (windows) / Command (Mac) button to select multiple options.
+                        </p>
                         <br />
-                        <form action="<?php echo base_url(); ?>query/date" class="form-horizontal form-label-left" method="get">
+                        <form action="<?php echo base_url(); ?>main/date" class="form-horizontal form-label-left" method="get">
                             <div class="form-group">
                                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Configuration file dates</label>
                                 <div class="col-md-4 col-sm-4 col-xs-12">

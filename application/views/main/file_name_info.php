@@ -2,7 +2,7 @@
     <div class="">
         <div class="page-title">
             <div class="title_left">
-                <h3>Query result</h3>
+                <h3>Query Results</h3>
             </div>
         </div>
         <div class="clearfix"></div>
@@ -16,9 +16,6 @@
                         <div class="clearfix"></div>
                     </div>
                     <div class="x_content">
-                        <p class="text-muted font-13 m-b-30">
-                            Responsive is an extension for DataTables that resolves that problem by optimising the table's layout for different screen sizes through the dynamic insertion and removal of columns from the table.
-                        </p>
                         <table id="datatable" class="table table-striped table-bordered">
                             <thead>
                                 <tr>
@@ -69,7 +66,7 @@
                                     foreach($fields as $fivar){
                                         if($i == 1 && $j == 1 && $fivar == "value"){
                                         ?>
-                                            <td><?php echo $var->$fivar; ?><a href="<?php echo base_url(); ?>query/info_detail/<?php echo $var->entity; ?>/<?php echo $var->date; ?>"><i class="fa fa-external-link pull-right"></i></a></td>
+                                            <td><?php echo $var->$fivar; ?><a href="<?php echo base_url(); ?>main/info_detail/<?php echo $var->entity; ?>/<?php echo $var->date; ?>"><i class="fa fa-external-link pull-right"></i></a></td>
                                         <?php
                                         }
                                         else{

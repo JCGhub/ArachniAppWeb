@@ -16,7 +16,7 @@ class home extends CI_Controller{
 			$this->load->view("theme/footer_home");
 		}
 		else{
-			header("Location: ".base_url()."query");
+			header("Location: ".base_url()."main");
 		}
 	}
 
@@ -38,7 +38,7 @@ class home extends CI_Controller{
 			}
 		}
 		else{
-			header("Location: ".base_url()."query");
+			header("Location: ".base_url()."main");
 		}
 	}
 
@@ -67,7 +67,7 @@ class home extends CI_Controller{
 			}
 		}
 		else{
-			header("Location: ".base_url()."query");
+			header("Location: ".base_url()."main");
 		}
 	}
 
@@ -82,7 +82,7 @@ class home extends CI_Controller{
 			$this->load->view("theme/footer_home");
 		}
 		else{
-			header("Location: ".base_url()."query");
+			header("Location: ".base_url()."main");
 		}
 	}
 
@@ -129,7 +129,7 @@ class home extends CI_Controller{
 			}
 		}
 		else{
-			header("Location: ".base_url()."query");
+			header("Location: ".base_url()."main");
 		}
 	}
 
@@ -146,7 +146,7 @@ class home extends CI_Controller{
 			}
 		}
 		else{
-			header("Location: ".base_url()."query");
+			header("Location: ".base_url()."main");
 		}
 	}
 
@@ -163,7 +163,7 @@ class home extends CI_Controller{
 			}
 		}
 		else{
-			header("Location: ".base_url()."query");
+			header("Location: ".base_url()."main");
 		}
 	}
 
@@ -171,7 +171,7 @@ class home extends CI_Controller{
 
 	function logged(){
 		if($this->session->userdata('logged_in')){
-			header("Location: ".base_url()."query");
+			header("Location: ".base_url()."main");
 		}
 		else{
 			$this->index();

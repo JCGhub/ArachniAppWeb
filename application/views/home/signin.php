@@ -28,7 +28,7 @@
                     <img src="<?php echo base_url(); ?>/assets/img/AAlogo2.png" style="width:60%;">
                     <br />
                     <br />
-                    <p>&copy; 2016 · All rights reserved · Web design based on the Bootstrap 3 template Gentelella Alela!</p>
+                    <p>&copy; 2017 · All rights reserved · Web design based on the Bootstrap 3 template Gentelella Alela!</p>
                 </div>
             </div>
         </form>

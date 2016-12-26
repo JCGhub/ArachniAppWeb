@@ -2,7 +2,7 @@
     <div class="">
         <div class="page-title">
             <div class="title_left">
-                <h3>File Queries</h3>
+                <h3>View Query</h3>
             </div>
         </div>
         <div class="clearfix"></div>

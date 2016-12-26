@@ -1,8 +1,8 @@
 <?php
-class query extends CI_Controller{
+class main extends CI_Controller{
 	public function __construct(){
 		parent::__construct();
-		$this->load->model("query_model","qM");
+		$this->load->model("main_model","qM");
 		$this->load->model("home_model","hM");
 	}
 
@@ -17,7 +17,26 @@ class query extends CI_Controller{
 
 			$this->load->view("theme/menu", $data);
 			$this->load->view("theme/header", $data);
-			$this->load->view("query/intro");
+			$this->load->view("main/intro");
+			$this->load->view("theme/footer");
+		}
+		else{
+			header('Location: //localhost/ArachniApp/home');
+		}
+	}
+
+	public function about(){
+		if($this->session->userdata('logged_in')){
+			$session_data = $this->session->userdata('logged_in');
+		    $data['username'] = $session_data['username'];
+		    $data['role'] = $session_data['role'];
+
+			$data["active"] = "";
+			$data["title"] = "About Us";
+
+			$this->load->view("theme/menu", $data);
+			$this->load->view("theme/header", $data);
+			$this->load->view("main/about");
 			$this->load->view("theme/footer");
 		}
 		else{
@@ -36,20 +55,21 @@ class query extends CI_Controller{
 		    $role = $session_data['role'];
 		    $data['role'] = $role;
 		    $id_user = $session_data['id_user'];
+		    $data['id_user'] = $id_user;
 
 			$data["active"] = "in";
-			$data["title"] = "File Queries";
+			$data["title"] = "File Name Queries";
 			$data["name_file"] = $this->qM->get_file_name_by_id($id_cf);			
 			$data["id_cf"] = $id_cf;
 					
 			$this->load->view("theme/menu", $data);
 			$this->load->view("theme/header", $data);
 			if($this->qM->get_file_queries($id_cf, $role, $id_user) == 0){
-				$this->load->view("query/file_queries_empty", $data);
+				$this->load->view("main/file_queries_empty", $data);
 			}
 			else{
 				$data["file_queries"] = $this->qM->get_file_queries($id_cf, $role, $id_user);
-				$this->load->view("query/file_queries", $data);
+				$this->load->view("main/file_queries", $data);
 			}
 			$this->load->view("theme/footer");
 		}
@@ -74,7 +94,7 @@ class query extends CI_Controller{
 
 				$this->load->view("theme/menu", $data);
 				$this->load->view("theme/header", $data);
-				$this->load->view("query/query_form", $data);
+				$this->load->view("main/query_form", $data);
 				$this->load->view("theme/footer");
 		    }
 		    else{
@@ -100,7 +120,7 @@ class query extends CI_Controller{
 			array('required' => 'You must provide a SQL name.'));
 			$this->form_validation->set_rules('role', 'Role', 'required|trim|xss_clean',
 			array('required' => 'You must provide a query role.'));
-			$this->form_validation->set_rules('select', 'Select', 'required|trim|xss_clean|callback_clause_invalid_characters',
+			$this->form_validation->set_rules('select', 'Select', 'required|trim|xss_clean|callback_select_invalid_characters',
 			array('required' => 'You must provide one or more fields to select.'));
 			$this->form_validation->set_rules('alias1', 'Alias1', 'trim|xss_clean|callback_alias_invalid_characters');
 			$this->form_validation->set_rules('alias2', 'Alias2', 'trim|xss_clean|callback_alias_invalid_characters');
@@ -182,7 +202,7 @@ class query extends CI_Controller{
 					//echo $queryFinal;
 					//echo $role." ".$id_user;
 
-					header('Location:  //localhost/ArachniApp/query/file_queries/'.$id);
+					header('Location:  //localhost/ArachniApp/main/file_queries/'.$id);
 				}
 				else{
 					//echo "Error";
@@ -226,6 +246,24 @@ class query extends CI_Controller{
 			else{
 				$this->form_validation->set_message('query_invalid_characters', 'Invalid or empty query.');
 				return false;
+			}
+		}
+		else{
+			header('Location: //localhost/ArachniApp/home');
+		}
+	}
+
+	public function select_invalid_characters($clause){
+		if(($this->session->userdata('logged_in'))){
+			$session_data = $this->session->userdata('logged_in');
+		    $data['username'] = $session_data['username'];
+
+			if(preg_match('/(\;)/', $clause) || preg_match('/(id_cf)/', $clause) || preg_match('/(id_cat)/', $clause) || preg_match('/(id_wp)/', $clause) || preg_match('/(id_str)/', $clause) || preg_match('/([0-9])/', $clause)){
+				$this->form_validation->set_message('select_invalid_characters', 'Invalid select characters.');
+				return false;
+			}
+			else{
+				return true;
 			}
 		}
 		else{
@@ -278,14 +316,54 @@ class query extends CI_Controller{
 		    $id_user = $session_data['id_user'];
 
 			$data["active"] = "in";
-			$data["title"] = "File Queries";
+			$data["title"] = "View query";
 			$data["query_name"] = $this->qM->get_query_name($id_query);	
 			$data["query_view"] = $this->qM->get_query_view($id_query);
 					
 			$this->load->view("theme/menu", $data);
 			$this->load->view("theme/header", $data);
-			$this->load->view("query/query_view", $data);
+			$this->load->view("main/query_view", $data);
 			$this->load->view("theme/footer");
+		}
+		else{
+			header('Location: //localhost/ArachniApp/home');
+		}
+	}
+
+	public function delete_query($id_query){
+		if($this->session->userdata('logged_in')){
+			$session_data = $this->session->userdata('logged_in');
+		    $data['username'] = $session_data['username'];
+		    $role = $session_data['role'];
+		    $data['role'] = $role;
+		    $id_user = $session_data['id_user'];
+
+			$data["active"] = "in";
+			$data["title"] = "Delete Queries";
+			$id_cf = $this->qM->get_file_id_by_query_id($id_query);
+			$this->qM->delete_query($id_query, $id_user);
+					
+			header('Location: //localhost/ArachniApp/main/file_queries/'.$id_cf);
+		}
+		else{
+			header('Location: //localhost/ArachniApp/home');
+		}
+	}
+
+	public function delete_user_query($id_query){
+		if($this->session->userdata('logged_in')){
+			$session_data = $this->session->userdata('logged_in');
+		    $data['username'] = $session_data['username'];
+		    $role = $session_data['role'];
+		    $data['role'] = $role;
+		    $id_user = $session_data['id_user'];
+
+			$data["active"] = "in";
+			$data["title"] = "Delete User Query";
+			$id_cf = $this->qM->get_file_id_by_query_id($id_query);
+			$this->qM->delete_query($id_query, $id_user);
+					
+			header('Location: //localhost/ArachniApp/main/user_queries');
 		}
 		else{
 			header('Location: //localhost/ArachniApp/home');
@@ -303,12 +381,12 @@ class query extends CI_Controller{
 		    $data['role'] = $session_data['role'];
 
 			$data["active"] = "fn";
-			$data["title"] = "File Name Queries";
+			$data["title"] = "File Name List";
 			$data["cf_names"] = $this->qM->get_file_names();
 					
 			$this->load->view("theme/menu", $data);
 			$this->load->view("theme/header", $data);
-			$this->load->view("query/file_name", $data);
+			$this->load->view("main/file_name", $data);
 			$this->load->view("theme/footer");
 		}
 		else{
@@ -323,7 +401,7 @@ class query extends CI_Controller{
 		    $data['role'] = $session_data['role'];
 
 			$data["active"] = "in";
-			$data["title"] = "File Name Results";
+			$data["title"] = "Query Results";
 			$id_cf = $this->qM->get_file_id_by_query_id($id);
 			$data["name_file"] = $this->qM->get_file_name_by_id($id_cf);
 			$query = $this->qM->get_query($id);
@@ -333,7 +411,7 @@ class query extends CI_Controller{
 			$this->load->view("theme/header", $data);
 
 			if($this->qM->get_string_info_by_file_query($query)['result'] == 0){
-				$this->load->view("query/file_name_info_empty", $data);
+				$this->load->view("main/file_name_info_empty", $data);
 			}
 			else{
 				$resultArray = $this->qM->get_string_info_by_file_query($query);
@@ -346,7 +424,7 @@ class query extends CI_Controller{
 				$data["result"] = $result;
 				$data["fields"] = $fields;
 
-				$this->load->view("query/file_name_info", $data);
+				$this->load->view("main/file_name_info", $data);
 			}
 			
 			$this->load->view("theme/footer");
@@ -367,11 +445,11 @@ class query extends CI_Controller{
 		    $data['role'] = $session_data['role'];
 			
 			$data["active"] = "ca";
-			$data["title"] = "Category Queries";
+			$data["title"] = "Category List";
 
 			$this->load->view("theme/menu", $data);
 			$this->load->view("theme/header", $data);
-			$this->load->view("query/category_list", $data);
+			$this->load->view("main/category_list", $data);
 			$this->load->view("theme/footer");
 		}
 		else{
@@ -386,18 +464,26 @@ class query extends CI_Controller{
 		    $data['role'] = $session_data['role'];
 
 			$data["active"] = "ca";
-			$data["title"] = "Category Queries";
-
-			if($id != null){
-		    	$data["cf_names"] = $this->qM->get_file_names_by_cat($id);
-		    }
-		    else{
-		    	header('Location: //localhost/ArachniApp/query/category_list');
-		    }
+			$data["title"] = "Category Files List";
 
 			$this->load->view("theme/menu", $data);
 			$this->load->view("theme/header", $data);
-			$this->load->view("query/category", $data);
+
+			if($id != null){
+				$data["cat_name"] = $this->qM->get_category_name_by_id($id);
+
+				if($this->qM->get_file_names_by_cat($id) == 0){
+					$this->load->view("main/category_empty", $data);				
+				}
+				else{
+					$data["cf_names"] = $this->qM->get_file_names_by_cat($id);
+	    			$this->load->view("main/category", $data);
+				}
+	    	}
+	   		else{
+	    		header('Location: //localhost/ArachniApp/main/category_list');
+	    	}
+			
 			$this->load->view("theme/footer");
 		}
 		else{
@@ -415,12 +501,12 @@ class query extends CI_Controller{
 		    $data['role'] = $session_data['role'];
 			
 			$data["active"] = "da";
-			$data["title"] = "Date Queries";
+			$data["title"] = "Date List";
 			$data["dates"] = $this->qM->get_dates();
 
 			$this->load->view("theme/menu", $data);
 			$this->load->view("theme/header", $data);
-			$this->load->view("query/date_list", $data);
+			$this->load->view("main/date_list", $data);
 			$this->load->view("theme/footer");
 		}
 		else{
@@ -435,7 +521,7 @@ class query extends CI_Controller{
 		    $data['role'] = $session_data['role'];
 
 		    $data["active"] = "da";
-			$data["title"] = "Date Queries";
+			$data["title"] = "Date Files List";
 
 		    if(isset($_GET['selectDate'])){
 		    	foreach($_GET['selectDate'] as $selectedOption){
@@ -450,13 +536,13 @@ class query extends CI_Controller{
 		    		$data["cf_names"] = $this->qM->get_file_names_by_date($dates);
 		    	}
 		    	else{
-		    		header('Location: //localhost/ArachniApp/query/date_list');
+		    		header('Location: //localhost/ArachniApp/main/date_list');
 		    	}
 		    }
 
 			$this->load->view("theme/menu", $data);
 			$this->load->view("theme/header", $data);
-			$this->load->view("query/date", $data);
+			$this->load->view("main/date", $data);
 			$this->load->view("theme/footer");
 		}
 		else{
@@ -475,12 +561,12 @@ class query extends CI_Controller{
 		    $data['role'] = $session_data['role'];
 			
 			$data["active"] = "wp";
-			$data["title"] = "Web Portal Queries";
+			$data["title"] = "Web Portal List";
 			$data["portals"] = $this->qM->get_web_portals();
 
 			$this->load->view("theme/menu", $data);
 			$this->load->view("theme/header", $data);
-			$this->load->view("query/web_portal_list", $data);
+			$this->load->view("main/web_portal_list", $data);
 			$this->load->view("theme/footer");
 		}
 		else{
@@ -495,24 +581,27 @@ class query extends CI_Controller{
 		    $data['role'] = $session_data['role'];
 
 		    $data["active"] = "wp";
-			$data["title"] = "Web Portal Queries";
+			$data["title"] = "Web Portal Files List";
 
 		    if(isset($_GET['selectWebPortal'])){
 		    	$id_wp = $_GET['selectWebPortal'];
+
+		    	$data["wp_name"] = $this->qM->get_web_portal_name_by_id($id_wp);
 		    	$data["cf_names"] = $this->qM->get_file_names_by_web_portal($id_wp);
 		    }
 		    else{
 		    	if($id != null){
+		    		$data["wp_name"] = $this->qM->get_web_portal_name_by_id($id);
 		    		$data["cf_names"] = $this->qM->get_file_names_by_web_portal($id);
 		    	}
 		    	else{
-		    		header('Location: //localhost/ArachniApp/query/web_portal_list');
+		    		header('Location: //localhost/ArachniApp/main/web_portal_list');
 		    	}
 		    }
 
 			$this->load->view("theme/menu", $data);
 			$this->load->view("theme/header", $data);
-			$this->load->view("query/web_portal", $data);
+			$this->load->view("main/web_portal", $data);
 			$this->load->view("theme/footer");
 		}
 		else{
@@ -544,11 +633,11 @@ class query extends CI_Controller{
 
 				$this->load->view("theme/menu", $data);
 				$this->load->view("theme/header", $data);
-				$this->load->view("query/info_detail", $data);
+				$this->load->view("main/info_detail", $data);
 				$this->load->view("theme/footer");
 		    }
 		    else{
-		    	header('Location: //localhost/ArachniApp/query');
+		    	header('Location: //localhost/ArachniApp/main');
 		    }		    
 		}
 		else{
@@ -575,7 +664,7 @@ class query extends CI_Controller{
 
 			$this->load->view("theme/menu", $data);
 			$this->load->view("theme/header", $data);
-			$this->load->view("query/profile", $data);
+			$this->load->view("main/profile", $data);
 			$this->load->view("theme/footer");
 		}
 		else{
@@ -707,7 +796,7 @@ class query extends CI_Controller{
 
 			$this->load->view("theme/menu", $data);
 			$this->load->view("theme/header", $data);
-			$this->load->view("query/user_queries", $data);
+			$this->load->view("main/user_queries", $data);
 			$this->load->view("theme/footer");
 		}
 		else{

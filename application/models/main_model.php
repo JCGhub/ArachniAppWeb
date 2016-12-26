@@ -1,5 +1,5 @@
 <?php
-class query_model extends CI_Model{
+class main_model extends CI_Model{
 	public function __construct(){
 		parent::__construct();
 	}
@@ -143,6 +143,19 @@ class query_model extends CI_Model{
 		}
 	}
 
+	public function get_category_name_by_id($id){
+		$this->db->select('name');
+		$this->db->from('category');
+		$this->db->where('id_cat', $id);
+		$query = $this->db->get();
+
+		$row = $query->row();
+
+		if(isset($row)){
+	        return $row->name;
+		}
+	}
+
 
 	// ***** DATE QUERIES *************************************************************************************
 
@@ -199,6 +212,19 @@ class query_model extends CI_Model{
 
 		if($query->num_rows() > 0){
 			return $query->result();
+		}
+	}
+
+	public function get_web_portal_name_by_id($id){
+		$this->db->select('name');
+		$this->db->from('web_portal');
+		$this->db->where('id_wp', $id);
+		$query = $this->db->get();
+
+		$row = $query->row();
+
+		if(isset($row)){
+	        return $row->name;
 		}
 	}
 
@@ -285,6 +311,12 @@ class query_model extends CI_Model{
         else{
             return false;
         }
+    }
+
+    public function delete_query($id_query, $id_user){
+    	$this->db->where('id_query', $id_query);
+    	$this->db->where('id_user', $id_user);
+		$this->db->delete('query');
     }
 
 	public function check_query($q){

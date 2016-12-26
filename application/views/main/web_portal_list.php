@@ -11,12 +11,15 @@
                 <div class="x_panel">
                     <div class="x_title">
                         <h2>Full list of web portals</small></h2>
-                        <a href="<?php echo base_url(); ?>query"><button class="btn btn-warning btn-xs pull-right" style="vertical-align:middle;" type="button">Return</button></a>
+                        <a href="<?php echo base_url(); ?>main"><button class="btn btn-warning btn-xs pull-right" style="vertical-align:middle;" type="button">Return</button></a>
                     <div class="clearfix"></div>
                     </div>
                     <div class="x_content">
-                        <br />
-                        <form action="<?php echo base_url(); ?>query/web_portal" class="form-horizontal form-label-left" method="get">
+                        <p>
+                        The search by web portal divides the configuration files according to the name of the web portal from which information has been downloaded. As with categories, this parameter is also specified in the configuration file that is processed in the desktop application.
+                        </p>
+                        </br>
+                        <form action="<?php echo base_url(); ?>main/web_portal" class="form-horizontal form-label-left" method="get">
                             <div class="form-group">
                                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Select the web portal</label>
                                 <div class="col-md-4 col-sm-4 col-xs-12">

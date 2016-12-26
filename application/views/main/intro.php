@@ -16,7 +16,7 @@
                     <div class="x_content">
                         <div class="row">
                             <div class="col-md-3 col-xs-12 widget widget_tally_box">
-                                <a href="<?php echo base_url(); ?>query/file_name">
+                                <a href="<?php echo base_url(); ?>main/file_name">
                                     <div class="x_panel intro_box">                                    
                                         <div class="x_title">
                                             <h2 class="intro_tit">Search by file name</h2>
@@ -33,7 +33,7 @@
                             </div>
 
                             <div class="col-md-3 col-xs-12 widget widget_tally_box">
-                                <a href="<?php echo base_url(); ?>query/category_list">
+                                <a href="<?php echo base_url(); ?>main/category_list">
                                     <div class="x_panel intro_box">
                                         <div class="x_title">
                                             <h2 class="intro_tit">Search by category</h2>
@@ -47,7 +47,7 @@
                             </div>
 
                             <div class="col-md-3 col-xs-12 widget widget_tally_box">
-                                <a href="<?php echo base_url(); ?>query/date_list">
+                                <a href="<?php echo base_url(); ?>main/date_list">
                                     <div class="x_panel intro_box">
                                         <div class="x_title">
                                             <h2 class="intro_tit">Search by date</h2>
@@ -61,7 +61,7 @@
                             </div>
 
                             <div class="col-md-3 col-xs-12 widget widget_tally_box">
-                                <a href="<?php echo base_url(); ?>query/web_portal_list">
+                                <a href="<?php echo base_url(); ?>main/web_portal_list">
                                     <div class="x_panel intro_box">
                                         <div class="x_title">
                                             <h2 class="intro_tit">Search by web portal</h2>

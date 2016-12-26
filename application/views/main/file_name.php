@@ -11,13 +11,10 @@
                 <div class="x_panel">
                     <div class="x_title">
                         <h2>Full list of the configuration files</h2>
-                        <a href="<?php echo base_url(); ?>query"><button class="btn btn-warning btn-xs pull-right" style="vertical-align:middle;" type="button">Return</button></a>
+                        <a href="<?php echo base_url(); ?>main"><button class="btn btn-warning btn-xs pull-right" style="vertical-align:middle;" type="button">Return</button></a>
                         <div class="clearfix"></div>
                     </div>
                     <div class="x_content">
-                        <p class="text-muted font-13 m-b-30">
-                            Responsive is an extension for DataTables that resolves that problem by optimising the table's layout for different screen sizes through the dynamic insertion and removal of columns from the table.
-                        </p>
                         <table id="datatable" class="table table-striped table-bordered">
                             <thead>
                                 <tr>
@@ -32,10 +29,10 @@
                                 foreach($cf_names as $var){
                                 ?>
                                 <tr>
-                                    <td><a href="<?php echo base_url(); ?>query/file_queries/<?php echo $var->id_cf; ?>"><?php echo $var->name; ?></a></td>
-                                    <td><a href="<?php echo base_url(); ?>query/web_portal/<?php echo $var->id_wp; ?>"><?php echo $var->namewp; ?></a></td>
-                                    <td><a href="<?php echo base_url(); ?>query/category/<?php echo $var->id_cat; ?>"><?php echo $var->namecat; ?></a></td>
-                                    <td><a href="<?php echo base_url(); ?>query/date/<?php echo $var->file_date; ?>"><?php echo $var->file_date; ?></td>
+                                    <td><a href="<?php echo base_url(); ?>main/file_queries/<?php echo $var->id_cf; ?>"><?php echo $var->name; ?></a></td>
+                                    <td><a href="<?php echo base_url(); ?>main/web_portal/<?php echo $var->id_wp; ?>"><?php echo $var->namewp; ?></a></td>
+                                    <td><a href="<?php echo base_url(); ?>main/category/<?php echo $var->id_cat; ?>"><?php echo $var->namecat; ?></a></td>
+                                    <td><a href="<?php echo base_url(); ?>main/date/<?php echo $var->file_date; ?>"><?php echo $var->file_date; ?></td>
                                 </tr>
                                 <?php
                                 }

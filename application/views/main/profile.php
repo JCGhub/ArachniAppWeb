@@ -36,7 +36,7 @@
                                     if($role != 1){
                                         ?>
                                         <li>
-                                            <a href="<?php echo base_url(); ?>query/user_queries/<?php echo $id_user; ?>"><i class="fa fa-database user-profile-icon" style="margin-right:5px;"></i> <?php echo $num_queries." Queries"; ?></a>
+                                            <a href="<?php echo base_url(); ?>main/user_queries/<?php echo $id_user; ?>"><i class="fa fa-database user-profile-icon" style="margin-right:5px;"></i> <?php echo $num_queries." Queries"; ?></a>
                                         </li>
                                         <?php
                                     }
@@ -61,7 +61,7 @@
                                 </div>
                             </div>
                             <div style="margin-top:20px;">
-                                <form action="<?php echo base_url(); ?>query/profile_data_val" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" method="post">
+                                <form action="<?php echo base_url(); ?>main/profile_data_val" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" method="post">
                                     <div class="form-group">
                                         <label class="control-label col-md-4 col-sm-4 col-xs-12">Name </label>
                                         <div class="col-md-7 col-sm-7 col-xs-12">
@@ -98,7 +98,7 @@
                                 </div>
                             </div>
                             <div style="margin-top:20px;">
-                                <form action="<?php echo base_url(); ?>query/profile_pass_val" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" method="post">
+                                <form action="<?php echo base_url(); ?>main/profile_pass_val" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" method="post">
                                     <div class="form-group">
                                         <label class="control-label col-md-5 col-sm-5 col-xs-12">Old pass * </label>
                                         <div class="col-md-7 col-sm-7 col-xs-12">
