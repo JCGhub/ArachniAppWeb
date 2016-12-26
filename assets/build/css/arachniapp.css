@@ -1,0 +1,37 @@
+.login .mainImage{
+	position: fixed;
+    left: 0;
+    top: 0;
+    opacity: 0.5;
+}
+
+.login_form{
+	background-color: rgba(255,255,255, .6);
+	padding-left: 10px;
+    margin-left: -10px;
+   	padding-right: 10px;
+    margin-right: -10px;
+    border-radius:10px;
+}
+
+.separator{
+	border-top: 1px solid #73879c;
+}
+
+.img-circle.profile_img{
+	background-color:#E7E7E7;
+}
+
+.intro_box:hover{
+	background-color: #1abb9c;
+	color: #fff;
+}
+
+.bs-glyphicons li:hover{
+	color: #fff !important;
+}
+
+.x_title .intro_tit{
+	float:none;
+	text-align:center;
+}
